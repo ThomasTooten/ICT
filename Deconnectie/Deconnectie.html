@@ -1,175 +1,364 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deconnectie voor Personeelsleden</title>
+    <title>MainIndex</title>
     <style>
-        body {
+        /* Algemene instellingen */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: Arial, sans-serif;
-            margin: 20px;
-            line-height: 1.6;
         }
-        header, footer {
+
+        html, body {
+            min-height: 100vh;
+            background: url('afbeeldingen/IMG_5420.JPG') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Achtergrond overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        /* Container voor flex behavior */
+        .section-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 20px auto;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.85);
+            width: 1500px;
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-container section {
+            width: 23%;
+            max-width: 300px;
+            position: relative;
             text-align: center;
-            padding: 10px;
-            background-color: #f8f9fa;
-            border: 1px solid #ddd;
+            cursor: pointer;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-container section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .section-container section p {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: blue;
+            font-size: 1.2em;
+            margin: 0;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 5px;
+            border-radius: 4px;
+        }
+
+        /* Header styling */
+        header {
+            text-align: center;
+            padding: 1em 0;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.7); /* Background voor betere leesbaarheid */
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            margin-bottom: 0.2em;
+            color: #618ba9;
+        }
+
+        header h2 {
+            font-size: 1.3em;
+            font-weight: normal;
+            color: #618ba9;
+        }
+
+        header p {
+            font-size: 1.1em;
+            color: #618ba9;
+        }
+
+        /* Navigatiebalk */
+        .menubalk {
+            display: flex;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .menubalk ul {
+            list-style-type: none;
+            display: flex;
+            padding: 0.5em;
+        }
+
+        .menubalk li {
+            position: relative;
+        }
+
+        .dropbtn {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropbtn:hover, .dropbtn:focus {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f2f2f2;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Main content styling */
+        main {
+            flex: 1;
+            width: 1500px;
+            max-width:100%; /* Breder gemaakt */
+            margin: 20px auto;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        main p {
             margin-bottom: 20px;
         }
-        header ul {
-            list-style: none;
-            padding: 0;
+
+        main a {
+            color: #ff5733;
+            text-decoration: none;
+            font-weight: bold;
         }
-        header ul li {
-            display: inline;
-            margin: 0 10px;
+
+        main a:hover {
+            color: #ff704d;
+            text-decoration: underline;
         }
+
+        /* iframe styling */
+        iframe {
+            width: 100%;
+            height: 700px; /* Groter gemaakt */
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            justify-content: space-between;
+        }
+
+
+        /* Footer styling */
+        footer {
+            text-align: center;
+            padding: 1em 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+        }
+
+        footer a {
+            color: #ffcc00;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #ffdd44;
+            text-decoration: underline;
+        }
+
+        footer p {
+            margin-bottom: 0.5em;
+            color: #e6e6e6;
+        }
+                /* Algemene stijl voor de container */
+                .post-container {
+            width: 300px;
+            border: 2px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-family: Arial, sans-serif;
+        }
+
+        /* Stijl voor de bovenste balk */
+        .header {
+            background-color: #2d536a;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        /* Stijl voor de inhoud */
         .content {
-            max-width: 800px;
-            margin: 0 auto;
+            background-color: #f2b740;
+            padding: 20px;
+            color: white;
+            font-size: 1.2em;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
-        h1, h2 {
-            color: #b71c1c;
+
+        /* Stijl voor de topics */
+        .content a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .content a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <header>
-
-        <h1>Afspraken rond deconnectie voor personeelsleden van de Academie, de Beiaardschool en het Conservatorium van Mechelen</h1>
-    </header>
-    <main>
-        <div class="content">
-            <h2>Inleiding</h2>
-            <p>In CAO XII werd afgesproken dat er op centraal niveau een afsprakenkader over het gebruik van digitale communicatiemiddelen in onderwijsinstellingen wordt uitgewerkt in de schoot van het onderhandelingscomité SCX-C2-OOC en VOCBE. Dat kader moet op lokaal niveau ingevuld en onderhandeld worden.</p>
-            <p>Wat zijn de krachtlijnen van het kader voor deconnectie:</p>
-            <p>
-                Het lokaal afsprakenkader over het gebruik van digitale communicatiemiddelen krijgt een duidelijke plaats binnen het preventief welzijnsbeleid van de Academie, de Beiaardschool en het Conservatorium. Het besteedt aandacht aan de impact van (de)connectiviteit op het psychosociaal welzijn en de balans tussen werk- en privéleven, sensibiliseert over het belang van deconnectie en streeft een gezonde academiecultuur na rond dit thema.
-            </p>
-            <p>
-                De Academie, de Beiaardschool en het Conservatorium zetten maximaal in op de voordelen van digitale communicatiemiddelen maar waken erover dat deze communicatiemiddelen geen extra werkdruk veroorzaken.
-            </p>
-            <p>
-                De Academie, de Beiaardschool en het Conservatorium zorgen ervoor dat de directie en het personeel van de 3 scholen over voldoende informatie en kennis beschikken om de digitale communicatiemiddelen op een correcte manier te gebruiken. Ze integreren daartoe de nodige opleidingen in hun professionaliseringsplan.
-            </p>
-            <p>
-                De Academie, de Beiaardschool en het Conservatorium communiceren helder over deze afspraken en nemen het op in de aanvangsbegeleiding van nieuwe leerkrachten en in het arbeidsreglement.
-            </p>
-            <p>
-                Afspraken met ouders en leerlingen in verband met communicatie en deconnectie leggen we vast in het academiereglement.
-            </p>
-            <p>
-                Personeelsleden die nood hebben aan een vorming rond het gebruik van (digitale) communicatiemiddelen maken hun vraag kenbaar bij de directie en kunnen hiervoor een professionaliseringstraject aanvragen.
-            </p>
-            
-            <h2>Definitie en Rollen</h2>
-            <p>
-                Deconnectie heeft betrekking op de communicatie tussen alle personeelsleden, ongeacht hun functie, met het oog op het respecteren van de rust- en verlofperiodes en het vrijwaren van de balans tussen werk en privéleven.
-            </p>
-            <p>
-                Rol van de actoren: alle personeelsleden van de Academie, de Beiaardschool en het Conservatorium, zowel de directies als alle andere personeelsleden, zijn verantwoordelijk voor het toepassen en de naleving van het afsprakenkader. De directies nemen hierin een voorbeeldfunctie op.
-            </p>
-
-            <h2>Beheersbaarheid van de Informatiestroom</h2>
-            <h3>Informatiestrromen en Communicatiekanalen</h3>
-            <ul>
-                <li>De Academie, de Beiaardschool en het Conservatorium concentreren de officiële informatiestromen binnen de organisatie zoveel mogelijk rond de elektronische leeromgeving van de school en rond het administratief pakket DKO3 van Artoso.</li>
-                <li>De officiële communicatiekanalen zijn:
-                    <ul>
-                        <li>Telefoon</li>
-                        <li>Mail (naar werkmailadres)</li>
-                        <li>Mail en sms vanuit DKO3 (naar leerlingen)</li>
-                        <li>Digitale nieuwsbrieven</li>
-                    </ul>
-                </li>
-                <li>Noch de directie noch het personeelslid of de leerling/ouder kan eisen om andere communicatiekanalen te gebruiken of via andere kanalen geïnformeerd te worden.</li>
-            </ul>
-            
-            <h3>Timing van het Versturen van Mailberichten</h3>
-            <ul>
-                <li>De Academie, de Beiaardschool en het Conservatorium engageren zich om enkel mails te versturen naar de personeelsleden tijdens de respectievelijke openingstijden van de 3 scholen.</li>
-                <li>Algemene mailcampagnes naar leerlingen worden ter info bezorgd aan de betrokken leerkrachten via mail.</li>
-            </ul>
-
-            <h2>Verwachtingen met Betrekking tot Lezen en Beantwoorden</h2>
-            <h3>Mailberichten</h3>
-            <ul>
-                <li>Mailberichten die het personeelslid of de directie ontvangt binnen de hierboven afgesproken uren worden verondersteld gelezen en beantwoord te zijn tegen de tweede daaropvolgende werkdag (WD+2), tenzij een later tijdstip aangegeven wordt. Berichten verstuurd na de openingstijden van de school worden verondersteld verstuurd te zijn de eerstvolgende werkdag.</li>
-                <li>We engageren ons om zoveel als mogelijk in mailberichten de verwachte actie te benoemen, waar nodig met een timing.</li>
-            </ul>
-
-            <h3>Telefonische Bereikbaarheid</h3>
-            <ul>
-                <li>De Academie, de Beiaardschool en het Conservatorium stellen volgende begrenzingen aan de telefonische bereikbaarheid voor personeelsleden voor:</li>
+    <div class="container">
+        <header>
+            <div class="menubalk">
                 <ul>
-                    <li>Weekdagen: van 8.30u tot 21.00u</li>
-                    <li>Zaterdagen: van 8.30u tot 12.30u (tenzij het personeelslid nog aan het werk is)</li>
-                    <li>Zondagen: enkel voor de Academie: van 8.30u tot 12.30u</li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">Office</button>
+                            <div class="dropdown-content">
+                                <a href="#">Teams</a>
+                                <a href="#">Office</a>
+                                <a href="#">Excel</a>
+                                <a href="#">Onedrive</a>
+                                <a href="#">Powerpoint</a>
+                                <a href="Deconnectie/StartPaginaMetTegel.html">Deconnectie</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">Hardware</button>
+                            <div class="dropdown-content">
+                                <a href="#">Beamer</a>
+                                <a href="#">Licht</a>
+                                <a href="#">Geluid</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">Deconnectie</button>
+                            <div class="dropdown-content">
+                                <a href="#">Teams</a>
+                                <a href="#">Office</a>
+                                <a href="#">Excel</a>
+                                <a href="#">Onedrive</a>
+                                <a href="#">Powerpoint</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">Opleidingen</button>
+                            <div class="dropdown-content">
+                                <a href="#">Teams</a>
+                                <a href="#">Office</a>
+                                <a href="#">Excel</a>
+                                <a href="#">Onedrive</a>
+                                <a href="#">Powerpoint</a>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
-                <li>Telefonische bereikbaarheid impliceert niet dat leerkrachten tijdens hun lessen een oproep moeten beantwoorden; indien een leerkracht tijdens het lesgeven een oproep van de school ontvangt, neemt hij zo snel als mogelijk contact op.</li>
-                <li>Directie, administratie en leerkrachten delen geen telefoonnummers van andere teamleden met ouders en leerlingen tenzij het personeelslid hiervoor de toestemming heeft gegeven; enkel het professionele mailadres wordt meegedeeld aan ouders en/of leerlingen.</li>
-            </ul>
-
-            <h3>Gebruik van Social Media in een Professionele Context</h3>
-            <ul>
-                <li>Andere communicatiekanalen dan de hierboven opgesomde kanalen worden enkel ondersteunend gebruikt; social media zoals Facebook, Instagram, website e.d. hebben een promotioneel en ondersteunend karakter; de daarin opgenomen info is ‘nice to know’.</li>
-                <li>We appreciëren het als personeelsleden die zelf actief zijn op social media de communicatie van de academie actief mee ondersteunen.</li>
-            </ul>
-
-            <h2>Communicatie en Bereikbaarheid</h2>
-            <h3>Tijdens de Vakanties</h3>
-            <ul>
-                <li>We respecteren volgende periode van ‘radiostilte’ tijdens vakantieperiodes:</li>
-                <ul>
-                    <li>Korte vakantieperiode (Herfst, Kerst, Krokus, Pasen en losse feestdagen): Radiostilte vanaf het einde van de laatste werkdag voor de vakantie tot het begin van de eerste werkdag na de vakantie.</li>
-                    <li>Zomervakantie: van 7/7 tot 23/8. In uitzonderlijke gevallen kan hiervan afgeweken worden (bv. Fabiolawedstrijd in de Beiaardschool).
-
-                        De bepalingen omtrent radiostilte gelden zowel voor interne (tussen personeelsleden) als externe communicatie (van en naar leerlingen/ouders).</li>
-                </ul>
-            </ul>
-                        <h3>Tijdens Afwezigheid Wegens Ziekte</h3>
-                        <ul>
-                            <li>Een personeelslid verwittigt bij ziekte de academie telefonisch op weekdagen voor 12.00u en tijdens het weekend uiterlijk om 8.30 of uiterlijk een half uur voor de start van de lessen. Indien het secretariaat niet kan bereikt worden, verwittigt het personeelslid de directeur.</li>
-                            <li>Een personeelslid met ziekteverlof heeft het recht om professioneel niet bereikbaar te zijn, noch voor de directie en collega’s noch voor leerlingen en ouders.</li>
-                            <li>In het belang van de continuïteit van het leerproces van de leerlingen, zorgt het personeelslid ervoor dat de informatie over de leerlingen en het leerproces maximaal ontsloten kan worden – in geval hij of zij vervangen wordt – door dit voldoende te documenteren.</li>
-                            <li>Een personeelslid met ziekteverlof voor meer dan één dag stelt bij voorkeur een out-of-office-bericht in.</li>
-                        </ul>
-                
-                        <h3>Bij Noodsituaties en Overmacht</h3>
-                        <p>Bij overmacht of noodsituaties wordt er steeds telefonisch of persoonlijk contact genomen met het secretariaat of de directie van de academie.</p>
-                
-                        <h2>Andere Afspraken</h2>
-                        <h3>Toegang tot de Digitale Communicatiemiddelen</h3>
-                        <p>
-                            De Academie, de Beiaardschool en het Conservatorium voorzien de nodige digitale infrastructuur en faciliteiten zodat de personeelsleden in de academie en tijdens de openingsuren van de academie toegang hebben tot en gebruik kunnen maken van de digitale communicatiemiddelen van de Academie, de Beiaardschool en het Conservatorium.
-                        </p>
-                        
-                        <h3>Professionalisering</h3>
-                        <p>De ICT-coördinator van de academie voorziet infosessies omtrent het gebruik van digitale tools en hulpmiddelen om de scheiding tussen werk en privé te bevorderen, bijvoorbeeld over:</p>
-                        <ul>
-                            <li>Out-of-Office-berichten</li>
-                            <li>Vermelding van de beschikbaarheid in mailfooters</li>
-                            <li>Digitale agenda-instellingen</li>
-                            <li>Regels voor het gebruik van Aan/CC/BCC in mailcommunicatie en mappensystemen om te archiveren</li>
-                            <li>‘De juiste tool voor het juiste doel’</li>
-                            <li>Timemanagement en GTD</li>
-                            <li>Mailetiquette</li>
-                            <li>Social Media etiquette</li>
-                        </ul>
-                        
-                        <h3>Sensibilisering en Evaluatie</h3>
-                        <p>De Academie, de Beiaardschool en het Conservatorium sensibiliseren de personeelsleden om werk en privé maximaal gescheiden te houden;</p>
-                        <ul>
-                            <li>We sensibiliseren personeelsleden om enkel professionele e-mailadressen van collega’s te delen met leerlingen en ouders.</li>
-                            <li>We sensibiliseren personeelsleden rond het gevaar van zgn. ‘Shadow-IT’; dit zijn de digitale communicatiekanalen die medewerkers op eigen initiatief gebruiken, buiten de door de academie officieel gebruikte informatiestromen en communicatiekanalen.</li>
-                            <li>Nieuwe leerkrachten worden tijdens het proces van de aanvangsbegeleiding bijgestaan rond deconnectie.</li>
-                            <li>In het lokaal comité wordt de lokale situatie gemonitord en kunnen de afspraken, na onderhandeling, worden bijgestuurd waar nodig.</li>
-                        </ul>
-                    </div>
-                </main>
-
-            </body>
-            </html>
-        
-            
+            </div>
+            <br>
+            <h1>Opleidingsplatform ICT</h1>
+            <h2>Volgende opleidingen</h2>
+            <p>Inschrijven</p>
+        </header>
+        <main>
+            <div class="section-container">
+                <section>
+                    <a href="/Outlook/Out_of_office/Outlook.html" style="text-decoration: none;">
+                        <div>
+                            <img src="afbeeldingen/Scherm­afbeelding 2024-10-16 om 13.28.45.png" alt="">
+                            <p>out-of-office</p>
+                        </div>
+                    </a>
+                </section>
+                <section>
+                    <a href="jouw_doel_url" style="text-decoration: none;">
+                        <div>
+                            <img src="Afbeeldingen/Scherm­afbeelding 2024-10-16 om 12.02.27.png" alt="">
+                            <p>TEAMS</p>
+                        </div>
+                    </a>
+                </section>
+                <section>
+                    <a href="jouw_doel_url" style="text-decoration: none;">
+                        <div>
+                            <img src="Afbeeldingen/Scherm­afbeelding 2024-10-16 om 12.02.41.png" alt="">
+                            <p>Bookings</p>
+                        </div>
+                    </a>
+                </section>
+            </div>
+        </main>
+    </div>
+    <footer>
+        <p>Contact</p>
+        <a href="mailto:thomas.tooten@dkomechelen.be">thomas.tooten@dkomechelen.be</a>
+        of bel me op <a href="tel:+32475587010">0475 58 70 10</a>
+    </footer>
+</body>
+</html>

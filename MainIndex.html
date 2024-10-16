@@ -14,12 +14,12 @@
         }
 
         html, body {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
+            min-height: 100vh;
             background: url('afbeeldingen/IMG_5420.JPG') no-repeat center center fixed;
             background-size: cover;
             color: #333;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Achtergrond overlay */
@@ -35,11 +35,46 @@
         }
 
         /* Container voor flex behavior */
-        .container {
-            flex: 1;
+        .section-container {
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 20px auto;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.85);
+            width: 1500px;
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-container section {
+            width: 23%;
+            max-width: 300px;
+            position: relative;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-container section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .section-container section p {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: blue;
+            font-size: 1.2em;
+            margin: 0;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 5px;
+            border-radius: 4px;
         }
 
         /* Header styling */
@@ -160,6 +195,13 @@
             border: 1px solid #ddd;
             border-radius: 8px;
         }
+        .container {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            justify-content: space-between;
+        }
+
 
         /* Footer styling */
         footer {
@@ -182,6 +224,46 @@
         footer p {
             margin-bottom: 0.5em;
             color: #e6e6e6;
+        }
+                /* Algemene stijl voor de container */
+                .post-container {
+            width: 300px;
+            border: 2px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-family: Arial, sans-serif;
+        }
+
+        /* Stijl voor de bovenste balk */
+        .header {
+            background-color: #2d536a;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        /* Stijl voor de inhoud */
+        .content {
+            background-color: #f2b740;
+            padding: 20px;
+            color: white;
+            font-size: 1.2em;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Stijl voor de topics */
+        .content a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .content a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -245,22 +327,45 @@
             <p>Inschrijven</p>
         </header>
         <main>
-          <section>
-
-            <p>
-              <a href='https://outlook.office365.com/owa/calendar/Ictopleidingen@dkomechelen.be/bookings/'>Online plannen</a>
-              <iframe src='https://outlook.office365.com/owa/calendar/Ictopleidingen@dkomechelen.be/bookings/' scrolling='yes'></iframe>
-            </p>
-            <p>
-              <a href='https://outlook.office365.com/owa/calendar/Ictopleidingen@dkomechelen.be/bookings/'>Online plannen</a>
-              <iframe src='https://outlook.office365.com/owa/calendar/Ictopleidingen@dkomechelen.be/bookings/' scrolling='yes'></iframe>
-            </p>
-          </section>
-          <section>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/ibf42LGUamM?si=GzmOyp-Xq6rOLZLL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/wt5-Mcimw78?si=Iyvw0HZ5SsUe5NLX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          </section>
-          </main>
+            <div class="section-container">
+                <section>
+                    <a href="jouw_doel_url" style="text-decoration: none;">
+                        <div>
+                            <img src="Afbeeldingen/Scherm­afbeelding 2024-10-16 om 12.01.47.png" alt="">
+                            <p>Deconnectie</p>
+                        </div>
+                    </a>
+                </section>
+                <section>
+                    <a href="jouw_doel_url" style="text-decoration: none;">
+                        <div>
+                            <img src="Afbeeldingen/Scherm­afbeelding 2024-10-16 om 12.02.27.png" alt="">
+                            <p>TEAMS</p>
+                        </div>
+                    </a>
+                </section>
+                <section>
+                    <a href="jouw_doel_url" style="text-decoration: none;">
+                        <div>
+                            <img src="Afbeeldingen/Scherm­afbeelding 2024-10-16 om 12.02.41.png" alt="">
+                            <p>Bookings</p>
+                        </div>
+                    </a>
+                </section>
+                <section>
+                    <div class="post-container">
+                        <div class="header">
+                            <a href="deconnectie.html" style="color: inherit; text-decoration: none;">Deconnectie</a>
+                        </div>
+                        <div class="content">
+                            <a href="topic1.html">• Topic 1</a>
+                            <a href="topic2.html">• Topic 2</a>
+                            <a href="topic3.html">• Topic 3</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
     </div>
     <footer>
         <p>Contact</p>
